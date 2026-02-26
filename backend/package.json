@@ -1,0 +1,32 @@
+{
+  "name": "streaming-ai-chatbot-backend",
+  "description": "Backend service for streaming AI chatbot using Motia framework with Groq API",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "scripts": {
+    "dev": "motia dev --verbose",
+    "dev:debug": "motia dev --debug",
+    "generate-types": "motia generate-types",
+    "build": "motia build",
+    "start": "motia dev",
+    "start:prod": "motia dev --port $PORT",
+    "clean": "rm -rf dist node_modules .motia .mermaid"
+  },
+  "keywords": [
+    "motia",
+    "streaming",
+    "ai",
+    "chatbot",
+    "groq",
+    "llm"
+  ],
+  "dependencies": {
+    "motia": "0.2.2",
+    "zod": "^3.25.20"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.2"
+  }
+}

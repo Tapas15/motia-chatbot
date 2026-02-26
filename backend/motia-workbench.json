@@ -1,0 +1,20 @@
+{
+  "chat": {
+    "steps/chat-api.step.ts": {
+      "x": 300.82955664582096,
+      "y": 61.25983698969445
+    },
+    "steps/index.step.ts": {
+      "x": 103.83106982624622,
+      "y": -340.4209673301321
+    },
+    "steps\\index.step.ts": {
+      "x": 0,
+      "y": 0
+    },
+    "steps\\chat-api.step.ts": {
+      "x": 206,
+      "y": 0
+    }
+  }
+}
