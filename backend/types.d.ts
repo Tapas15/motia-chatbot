@@ -12,6 +12,7 @@ declare module 'motia' {
   }
 
   type Handlers = {
+    'HealthCheck': ApiRouteHandler<Record<string, unknown>, ApiResponse<200, { status: string; timestamp: string; service: string; version: string }>, never>
     'ChatApi': ApiRouteHandler<{ message: string; conversationId?: string }, ApiResponse<200, { conversationId: string; title: string; explanation: string }> | ApiResponse<500, { conversationId: string; title: string; explanation: string }>, never>
   }
 }

@@ -22,7 +22,25 @@ import './App.css';
 //    - API Key: Stored in .env file as GROQ_API_KEY
 // ============================================================
 
+// API base URL configuration
+// For Railway deployment, this should be the full URL of your backend service
+// For local development, leave it empty to use the proxy configuration
 const API_BASE = process.env.REACT_APP_API_BASE || '';
+
+console.log('API_BASE:', API_BASE); // Log the API base URL for debugging
+
+// Helper function to get the correct API endpoint
+const getApiUrl = (path) => {
+  // If API_BASE is an absolute URL, use it directly
+  if (API_BASE && (API_BASE.startsWith('http://') || API_BASE.startsWith('https://'))) {
+    // Ensure there's no duplicate slash between base URL and path
+    const url = `${API_BASE.replace(/\/$/, '')}/${path.replace(/^\/+/, '')}`;
+    console.log('Constructed API URL:', url); // Log the constructed URL for debugging
+    return url;
+  }
+  // Otherwise, treat it as a relative path
+  return path;
+};
 
 // Helper function to generate unique IDs for messages
 const generateMessageId = () => `msg_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
@@ -82,7 +100,7 @@ function App() {
       // ============================================================
       // This calls our Motia backend at POST /chat
       // The backend then calls Groq API and returns the response
-      const response = await fetch(`${API_BASE}/chat`, {
+      const response = await fetch(getApiUrl('/chat'), {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

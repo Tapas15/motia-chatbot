@@ -1,20 +1,10 @@
-# Railway Configuration - Frontend
-# YouTube to Book Summary Converter
-
+# Railway configuration for frontend service
 [build]
-builder = "DOCKERFILE"
-dockerfilePath = "Dockerfile.railway"
+builder = "Dockerfile.railway"
 
 [deploy]
-# Railway will automatically set the PORT environment variable
-# The app listens on this port
-healthcheckPath = "/"
-healthcheckTimeout = 600
-healthcheckInterval = 30
-healthcheckStartPeriod = 60
-restartPolicyType = "ON_FAILURE"
-restartPolicyMaxRetries = 3
+numReplicas = 1
+sleepApplication = false
 
-# Environment variables (set these in Railway dashboard)
-# REACT_APP_API_BASE - Required for API integration
-# Should point to the backend service URL
+[env]
+REACT_APP_API_BASE = "https://motia-chatbot-production-03e6.up.railway.app"
