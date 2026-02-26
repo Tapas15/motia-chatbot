@@ -22,7 +22,7 @@ import './App.css';
 //    - API Key: Stored in .env file as GROQ_API_KEY
 // ============================================================
 
-const API_BASE = '';  // Use proxy from package.json (points to localhost:3000)
+const API_BASE = process.env.REACT_APP_API_BASE || '';
 
 // Helper function to generate unique IDs for messages
 const generateMessageId = () => `msg_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
