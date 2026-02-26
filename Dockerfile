@@ -54,18 +54,18 @@ COPY --from=builder-frontend /app/frontend/build ./frontend/build
 # Install nginx for frontend
 RUN apk add --no-cache nginx
 
-    # Copy nginx configuration
-    COPY frontend/nginx.conf /etc/nginx/http.d/default.conf
+# Copy nginx configuration
+COPY frontend/nginx.conf /etc/nginx/http.d/default.conf
 
 # Create nginx working directories
 RUN mkdir -p /run/nginx
 
 # Set environment
 ENV NODE_ENV=production
-ENV PORT=3001
 
-# Expose ports
-EXPOSE 3001 8080
+# Railway automatically sets PORT environment variable
+# We'll use the PORT variable for backend
+EXPOSE ${PORT:-3001} 8080
 
 # Start both backend and nginx
 CMD sh -c "cd /app/backend && npm run start:prod & nginx -g 'daemon off;'"
