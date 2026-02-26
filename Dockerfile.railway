@@ -68,4 +68,4 @@ ENV NODE_ENV=production
 EXPOSE ${PORT:-3001} 8080
 
 # Start both backend and nginx
-CMD sh -c "cd /app/backend && npm run start:prod & nginx -g 'daemon off;'"
+CMD sh -c "cd /app/backend && PORT=${PORT:-3001} npm run start:prod & nginx -g 'daemon off;'"
