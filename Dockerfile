@@ -51,11 +51,12 @@ COPY --from=builder-backend /app/backend/public ./backend/public
 # Copy frontend files
 COPY --from=builder-frontend /app/frontend/build ./frontend/build
 
-# Install nginx for frontend
-RUN apk add --no-cache nginx
+# Install nginx and gettext (for envsubst)
+RUN apk add --no-cache nginx gettext
 
-# Copy nginx configuration
-COPY frontend/nginx.conf /etc/nginx/http.d/default.conf
+# Copy nginx configuration and replace PORT variable
+COPY frontend/nginx.conf /tmp/nginx.conf
+RUN envsubst '${PORT}' < /tmp/nginx.conf > /etc/nginx/http.d/default.conf
 
 # Create nginx working directories
 RUN mkdir -p /run/nginx

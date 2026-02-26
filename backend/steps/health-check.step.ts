@@ -16,7 +16,7 @@ export const config: ApiRouteConfig = {
     }),
   },
   emits: [],
-  flows: [],
+  flows: ['chat'],
 };
 
 export const handler = async (
