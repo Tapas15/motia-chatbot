@@ -60,7 +60,7 @@ streaming-ai-chatbot/
 
 ## 🚂 Railway Deployment
 
-This project is fully configured for deployment on Railway with Docker.
+This project supports **separate backend and frontend deployment** on Railway for better scalability and isolation.
 
 ### Prerequisites
 
@@ -68,42 +68,26 @@ This project is fully configured for deployment on Railway with Docker.
 2. **Groq API Key**: Get from [console.groq.com](https://console.groq.com)
 3. **Docker**: For local testing (optional)
 
-### Quick Deploy
+### Detailed Deployment Instructions
 
-1. Push your code to GitHub
-2. Go to [railway.app](https://railway.app) → "New Project" → "Deploy from GitHub repo"
-3. Select your repository
-4. Add environment variable: `GROQ_API_KEY` = your-groq-api-key
-5. Railway will auto-detect the Dockerfile and deploy!
-
-### Docker Local Testing
-
-```bash
-# Create .env file with your API key
-echo "GROQ_API_KEY=your-groq-api-key" > .env
-
-# Build and run with Docker Compose
-docker-compose up --build
-
-# Access the app
-# Frontend: http://localhost
-# Backend API: http://localhost:3000
-```
-
-### Environment Variables (Railway)
-
-| Variable | Description | Required |
-|----------|-------------|----------|
-| `GROQ_API_KEY` | Your Groq API key | Yes |
-| `GROQ_MODEL` | Model to use | No |
+Please see [DEPLOYMENT_GUIDE.md](DEPLOYMENT_GUIDE.md) for step-by-step instructions on:
+- Deploying the backend as a separate Railway service
+- Deploying the frontend as a separate Railway service  
+- Configuring environment variables
+- Testing the deployed application
 
 ### Project Files for Deployment
 
-- `railway.json` - Railway deployment config
+- `DEPLOYMENT_GUIDE.md` - Detailed deployment instructions
+- `ARCHITECTURE.md` - Project architecture documentation
+- `backend/Dockerfile.railway` - Backend Railway Dockerfile
+- `backend/railway.json` - Backend Railway config
+- `backend/railway.toml` - Backend Railway TOML config
+- `frontend/Dockerfile.railway` - Frontend Railway Dockerfile
+- `frontend/railway.json` - Frontend Railway config
+- `frontend/railway.toml` - Frontend Railway TOML config
+- `frontend/nginx.conf` - Nginx configuration for Railway
 - `docker-compose.yml` - Local Docker setup
-- `backend/Dockerfile` - Backend container
-- `frontend/Dockerfile` - Frontend container (nginx)
-- `frontend/nginx.conf` - Nginx config with API proxy
 
 ## 🛠️ Setup
 
