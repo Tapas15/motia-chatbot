@@ -28,7 +28,7 @@ services:
       context: ./frontend
       dockerfile: Dockerfile
       args:
-        - REACT_APP_API_BASE=http://backend:3000
+        - REACT_APP_API_BASE=http://localhost:3000
     container_name: streaming-chatbot-frontend
     ports:
       - "80:80"
