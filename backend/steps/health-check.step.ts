@@ -6,7 +6,7 @@ export const config: ApiRouteConfig = {
   name: 'HealthCheck',
   description: 'Health check endpoint for the application',
   method: 'GET',
-  path: '/',
+  path: '/health',
   responseSchema: {
     200: z.object({
       status: z.string(),
