@@ -64,11 +64,11 @@ RUN mkdir -p /run/nginx
 # Set environment
 ENV NODE_ENV=production
 ENV PORT=${PORT:-3000}
-ENV BACKEND_PORT=3001
+ENV BACKEND_PORT=${PORT:-3000}
 
 # Railway automatically sets PORT environment variable
-# We'll use the PORT variable for nginx and BACKEND_PORT for backend
-EXPOSE ${PORT:-3000} ${BACKEND_PORT:-3001}
+# We'll use the same port for both backend and nginx to simplify
+EXPOSE ${PORT:-3000}
 
 # Start both backend and nginx
-CMD sh -c "cd /app/backend && PORT=${BACKEND_PORT:-3001} npm run start:prod & nginx -g 'daemon off;'"
+CMD ["sh", "-c", "cd /app/backend && PORT=${PORT:-3000} npm run start:prod & nginx -g 'daemon off;'"]
