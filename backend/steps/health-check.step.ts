@@ -27,6 +27,11 @@ export const handler = async (
   
   return {
     status: 200,
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'GET, OPTIONS',
+      'Access-Control-Allow-Headers': 'Content-Type',
+    },
     body: {
       status: 'ok',
       timestamp: new Date().toISOString(),

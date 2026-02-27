@@ -110,6 +110,11 @@ export const handler = async (
 
     return {
       status: 200,
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Methods': 'POST, GET, OPTIONS',
+        'Access-Control-Allow-Headers': 'Content-Type',
+      },
       body: {
         conversationId,
         title,
@@ -123,6 +128,11 @@ export const handler = async (
     
     return {
       status: 500,
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Methods': 'POST, GET, OPTIONS',
+        'Access-Control-Allow-Headers': 'Content-Type',
+      },
       body: {
         conversationId,
         title: 'Error',
