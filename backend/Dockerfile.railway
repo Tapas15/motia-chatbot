@@ -1,4 +1,4 @@
-# Backend Dockerfile for Railway deployment
+# Backend Dockerfile for Railway/Render deployment
 # This Dockerfile builds and runs the Motia backend service
 
 # Base image
