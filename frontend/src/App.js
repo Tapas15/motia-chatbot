@@ -25,6 +25,9 @@ import './App.css';
 // API base URL configuration
 // For Railway deployment, this should be the full URL of your backend service
 // For local development, leave it empty to use the proxy configuration
+// API base URL configuration
+// For Railway deployment, set REACT_APP_API_BASE to your backend URL
+// For local development, leave it empty to use the proxy configuration
 const API_BASE = process.env.REACT_APP_API_BASE || '';
 
 console.log('API_BASE:', API_BASE); // Log the API base URL for debugging

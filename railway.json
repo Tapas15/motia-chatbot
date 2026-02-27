@@ -1,0 +1,37 @@
+{
+  "$schema": "https://railway.app/railway.schema.json",
+  "services": {
+    "backend": {
+      "build": {
+        "builder": "DOCKERFILE",
+        "dockerfile": "backend/Dockerfile.railway"
+      },
+      "deploy": {
+        "numReplicas": 1,
+        "restartPolicyType": "ON_FAILURE",
+        "restartPolicyMaxRetries": 10,
+        "healthcheckPath": "/health",
+        "healthcheckTimeout": 300
+      },
+      "env": {
+        "NODE_ENV": "production"
+      }
+    },
+    "frontend": {
+      "build": {
+        "builder": "DOCKERFILE",
+        "dockerfile": "frontend/Dockerfile.railway"
+      },
+      "deploy": {
+        "numReplicas": 1,
+        "restartPolicyType": "ON_FAILURE",
+        "restartPolicyMaxRetries": 10,
+        "healthcheckPath": "/",
+        "healthcheckTimeout": 300
+      },
+      "env": {
+        "NODE_ENV": "production"
+      }
+    }
+  }
+}

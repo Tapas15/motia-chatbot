@@ -1,0 +1,29 @@
+# Railway configuration for streaming AI chatbot
+[global]
+name = "streaming-ai-chatbot"
+description = "Streaming AI chatbot with frontend and backend services"
+
+# Backend service configuration
+[service.backend]
+name = "motia-chatbot"
+build_command = "cd backend && npm run build"
+start_command = "cd backend && npm run start:prod"
+dockerfile = "backend/Dockerfile.railway"
+healthcheck_path = "/health"
+healthcheck_timeout = 300
+
+[service.backend.env]
+NODE_ENV = "production"
+
+# Frontend service configuration
+[service.frontend]
+name = "sparkling-benevolence"
+build_command = "cd frontend && npm run build"
+start_command = "cd frontend && npm run start"
+dockerfile = "frontend/Dockerfile.railway"
+healthcheck_path = "/"
+healthcheck_timeout = 300
+
+[service.frontend.env]
+NODE_ENV = "production"
+# Set REACT_APP_API_BASE in Railway dashboard to your backend service URL

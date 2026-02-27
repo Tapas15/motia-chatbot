@@ -7,4 +7,4 @@ numReplicas = 1
 sleepApplication = false
 
 [env]
-REACT_APP_API_BASE = "https://motia-chatbot-production-03e6.up.railway.app"
+# Set REACT_APP_API_BASE in Railway dashboard to your backend service URL
