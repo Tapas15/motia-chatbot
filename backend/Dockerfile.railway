@@ -19,8 +19,11 @@ COPY . .
 # Build the application
 RUN npm run build
 
-# Expose port (Railway uses dynamic ports via $PORT environment variable)
+# Expose port (Railway/Render uses dynamic ports via $PORT environment variable)
 EXPOSE 3000
+
+# Set environment variables
+ENV DANGEROUSLY_DISABLE_HOST_CHECK=true
 
 # Start the application
 CMD ["npm", "run", "start:prod"]
