@@ -19,6 +19,7 @@ COPY . .
 # Allow REACT_APP_API_BASE to be passed as a build arg or use Railway environment variable
 ARG REACT_APP_API_BASE
 ENV REACT_APP_API_BASE=${REACT_APP_API_BASE:-}
+ENV DANGEROUSLY_DISABLE_HOST_CHECK=true
 RUN npm run build
 
 # Stage 2: Serve with Nginx
