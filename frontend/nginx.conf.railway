@@ -1,6 +1,6 @@
 server {
     listen ${PORT};
-    server_name localhost;
+    server_name localhost motia-chatbot.onrender.com;
     root /usr/share/nginx/html;
     index index.html;
 
