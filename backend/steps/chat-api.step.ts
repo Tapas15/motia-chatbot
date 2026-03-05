@@ -49,14 +49,20 @@ export const handler = async (
   const groqApiKey = process.env.GROQ_API_KEY;
   const groqModel = process.env.GROQ_MODEL || 'openai/gpt-oss-120b';
 
-  if (!groqApiKey) {
-    ctx.logger.error('GROQ_API_KEY not configured');
+  // For demo purposes, if no API key is configured, return a mock response
+  if (!groqApiKey || groqApiKey === 'your_groq_api_key_here') {
+    ctx.logger.info('Using mock response - GROQ_API_KEY not configured');
     return {
-      status: 500,
+      status: 200,
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Methods': 'POST, GET, OPTIONS',
+        'Access-Control-Allow-Headers': 'Content-Type',
+      },
       body: {
         conversationId,
-        title: 'Configuration Error',
-        explanation: 'GROQ_API_KEY is not configured. Please set it in your .env file.',
+        title: 'Demo Response',
+        explanation: 'This is a demo response. To get real AI responses, please set your GROQ_API_KEY in the .env file. You can obtain a free API key from https://console.groq.com/.',
       },
     };
   }

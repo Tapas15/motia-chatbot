@@ -10,6 +10,8 @@ COPY package*.json ./
 RUN npm ci
 
 # Copy source files
+COPY index.html ./
+COPY vite.config.js ./
 COPY public ./public
 COPY src ./src
 
